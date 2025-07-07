@@ -1,0 +1,468 @@
+{
+  "tables": {
+    "comments": {
+      "name": "comments",
+      "comment": null,
+      "columns": {
+        "todo_id": {
+          "name": "todo_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "comment_id": {
+          "name": "comment_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "STRING(MAX)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "IDX_comments_user_id_E6D097A830600D54": {
+          "name": "IDX_comments_user_id_E6D097A830600D54",
+          "unique": false,
+          "columns": [
+            "user_id"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {}
+    },
+    "users": {
+      "name": "users",
+      "comment": null,
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "STRING(255)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "username": {
+          "name": "username",
+          "type": "STRING(100)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "idx_users_email": {
+          "name": "idx_users_email",
+          "unique": true,
+          "columns": [
+            "email"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {}
+    },
+    "attachments": {
+      "name": "attachments",
+      "comment": null,
+      "columns": {
+        "todo_id": {
+          "name": "todo_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "attachment_id": {
+          "name": "attachment_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "filename": {
+          "name": "filename",
+          "type": "STRING(255)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "file_size": {
+          "name": "file_size",
+          "type": "INT64",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "mime_type": {
+          "name": "mime_type",
+          "type": "STRING(100)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "storage_path": {
+          "name": "storage_path",
+          "type": "STRING(500)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "uploaded_at": {
+          "name": "uploaded_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "IDX_attachments_user_id_4C7D73049CFAC993": {
+          "name": "IDX_attachments_user_id_4C7D73049CFAC993",
+          "unique": false,
+          "columns": [
+            "user_id"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {}
+    },
+    "categories": {
+      "name": "categories",
+      "comment": null,
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "category_id": {
+          "name": "category_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "STRING(100)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "color": {
+          "name": "color",
+          "type": "STRING(7)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "IDX_categories_category_id_U_BC14739FA19E28EE": {
+          "name": "IDX_categories_category_id_U_BC14739FA19E28EE",
+          "unique": true,
+          "columns": [
+            "category_id"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {}
+    },
+    "tags": {
+      "name": "tags",
+      "comment": null,
+      "columns": {
+        "tag_id": {
+          "name": "tag_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "STRING(50)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "idx_tags_name": {
+          "name": "idx_tags_name",
+          "unique": true,
+          "columns": [
+            "name"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {}
+    },
+    "todos": {
+      "name": "todos",
+      "comment": null,
+      "columns": {
+        "todo_id": {
+          "name": "todo_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "category_id": {
+          "name": "category_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
+          "type": "STRING(255)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "STRING(MAX)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "STRING(20)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "priority": {
+          "name": "priority",
+          "type": "STRING(10)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "due_date": {
+          "name": "due_date",
+          "type": "DATE",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "completed_at": {
+          "name": "completed_at",
+          "type": "TIMESTAMP",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "idx_todos_due_date": {
+          "name": "idx_todos_due_date",
+          "unique": false,
+          "columns": [
+            "due_date"
+          ],
+          "type": ""
+        },
+        "IDX_todos_user_id_4E872528DC8BBCA7": {
+          "name": "IDX_todos_user_id_4E872528DC8BBCA7",
+          "unique": false,
+          "columns": [
+            "user_id"
+          ],
+          "type": ""
+        },
+        "IDX_todos_category_id_N_3B7864FE3ED3FF87": {
+          "name": "IDX_todos_category_id_N_3B7864FE3ED3FF87",
+          "unique": false,
+          "columns": [
+            "category_id"
+          ],
+          "type": ""
+        },
+        "idx_todos_user_status": {
+          "name": "idx_todos_user_status",
+          "unique": false,
+          "columns": [
+            "user_id",
+            "status"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {}
+    },
+    "todo_tags": {
+      "name": "todo_tags",
+      "comment": null,
+      "columns": {
+        "todo_id": {
+          "name": "todo_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "tag_id": {
+          "name": "tag_id",
+          "type": "STRING(36)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "default": null,
+          "check": null,
+          "comment": null,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "IDX_todo_tags_tag_id_8034AADD17A5A521": {
+          "name": "IDX_todo_tags_tag_id_8034AADD17A5A521",
+          "unique": false,
+          "columns": [
+            "tag_id"
+          ],
+          "type": ""
+        }
+      },
+      "constraints": {}
+    }
+  }
+}
