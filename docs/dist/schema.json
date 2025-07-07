@@ -10,6 +10,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "comment_id": {
@@ -18,6 +20,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "user_id": {
@@ -26,6 +30,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "content": {
@@ -34,6 +40,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "created_at": {
@@ -42,6 +50,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         }
       },
@@ -67,6 +77,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "email": {
@@ -75,6 +87,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "username": {
@@ -83,6 +97,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "created_at": {
@@ -91,6 +107,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "updated_at": {
@@ -99,6 +117,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         }
       },
@@ -124,6 +144,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "attachment_id": {
@@ -132,6 +154,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "user_id": {
@@ -140,6 +164,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "filename": {
@@ -148,6 +174,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "file_size": {
@@ -156,6 +184,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "mime_type": {
@@ -164,6 +194,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "storage_path": {
@@ -172,6 +204,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "uploaded_at": {
@@ -180,6 +214,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         }
       },
@@ -205,6 +241,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "category_id": {
@@ -213,6 +251,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "name": {
@@ -221,6 +261,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "color": {
@@ -229,6 +271,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": false
         },
         "created_at": {
@@ -237,6 +281,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         }
       },
@@ -262,6 +308,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "name": {
@@ -270,6 +318,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "created_at": {
@@ -278,6 +328,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         }
       },
@@ -303,6 +355,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "user_id": {
@@ -311,6 +365,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "category_id": {
@@ -319,6 +375,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": false
         },
         "title": {
@@ -327,6 +385,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "description": {
@@ -335,6 +395,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": false
         },
         "status": {
@@ -343,6 +405,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "priority": {
@@ -351,6 +415,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "due_date": {
@@ -359,6 +425,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": false
         },
         "created_at": {
@@ -367,6 +435,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "updated_at": {
@@ -375,6 +445,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "completed_at": {
@@ -383,6 +455,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": false
         }
       },
@@ -433,6 +507,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "tag_id": {
@@ -441,6 +517,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         },
         "created_at": {
@@ -449,6 +527,8 @@
           "default": null,
           "check": null,
           "comment": null,
+          "primary": false,
+          "unique": false,
           "notNull": true
         }
       },
@@ -464,5 +544,48 @@
       },
       "constraints": {}
     }
-  }
+  },
+  "relationships": {
+    "todos_todo_id_to_comments_todo_id": {
+      "name": "todos_todo_id_to_comments_todo_id",
+      "primaryTableName": "todos",
+      "primaryColumnName": "todo_id",
+      "foreignTableName": "comments",
+      "foreignColumnName": "todo_id",
+      "cardinality": "ONE_TO_ONE",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "CASCADE"
+    },
+    "todos_todo_id_to_attachments_todo_id": {
+      "name": "todos_todo_id_to_attachments_todo_id",
+      "primaryTableName": "todos",
+      "primaryColumnName": "todo_id",
+      "foreignTableName": "attachments",
+      "foreignColumnName": "todo_id",
+      "cardinality": "ONE_TO_ONE",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "CASCADE"
+    },
+    "users_user_id_to_categories_user_id": {
+      "name": "users_user_id_to_categories_user_id",
+      "primaryTableName": "users",
+      "primaryColumnName": "user_id",
+      "foreignTableName": "categories",
+      "foreignColumnName": "user_id",
+      "cardinality": "ONE_TO_ONE",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "CASCADE"
+    },
+    "todos_todo_id_to_todo_tags_todo_id": {
+      "name": "todos_todo_id_to_todo_tags_todo_id",
+      "primaryTableName": "todos",
+      "primaryColumnName": "todo_id",
+      "foreignTableName": "todo_tags",
+      "foreignColumnName": "todo_id",
+      "cardinality": "ONE_TO_ONE",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "CASCADE"
+    }
+  },
+  "tableGroups": {}
 }
