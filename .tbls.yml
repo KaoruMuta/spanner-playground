@@ -1,0 +1,12 @@
+dsn: spanner://test-project/test-instance/todo-db
+docPath: docs
+er:
+  skip: false
+  format: mermaid
+  comment: true
+  hideDef: true
+  showColumnTypes:
+    related: true
+    primary: true
+  distance: 2
+  font: M+
