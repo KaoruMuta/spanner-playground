@@ -1,1 +1,540 @@
-{"name":"projects/test-project/instances/test-instance/databases/todo-db","tables":[{"name":"comments","type":"BASIC TABLE","columns":[{"name":"todo_id","type":"STRING(36)","nullable":false},{"name":"comment_id","type":"STRING(36)","nullable":false},{"name":"user_id","type":"STRING(36)","nullable":false},{"name":"content","type":"STRING(MAX)","nullable":false},{"name":"created_at","type":"TIMESTAMP (allow_commit_timestamp=TRUE)","nullable":false}],"indexes":[{"name":"IDX_comments_user_id_E6D097A830600D54","def":"CREATE INDEX IDX_comments_user_id_E6D097A830600D54 ON comments (user_id)","table":"comments","columns":["user_id"]}],"constraints":[{"name":"PRIMARY_KEY","type":"PRIMARY_KEY","def":"PRIMARY KEY(todo_id, comment_id)","table":"comments","columns":["todo_id","comment_id"]},{"name":"INTERLEAVE","type":"INTERLEAVE","def":"INTERLEAVE IN PARENT todos ON DELETE CASCADE","table":"comments","referenced_table":"todos","columns":["todo_id","comment_id"],"referenced_columns":["todo_id"]}]},{"name":"users","type":"BASIC TABLE","columns":[{"name":"user_id","type":"STRING(36)","nullable":false},{"name":"email","type":"STRING(255)","nullable":false},{"name":"username","type":"STRING(100)","nullable":false},{"name":"created_at","type":"TIMESTAMP (allow_commit_timestamp=TRUE)","nullable":false},{"name":"updated_at","type":"TIMESTAMP (allow_commit_timestamp=TRUE)","nullable":false}],"indexes":[{"name":"idx_users_email","def":"CREATE UNIQUE INDEX idx_users_email ON users (email)","table":"users","columns":["email"]}],"constraints":[{"name":"PRIMARY_KEY","type":"PRIMARY_KEY","def":"PRIMARY KEY(user_id)","table":"users","columns":["user_id"]}]},{"name":"attachments","type":"BASIC TABLE","columns":[{"name":"todo_id","type":"STRING(36)","nullable":false},{"name":"attachment_id","type":"STRING(36)","nullable":false},{"name":"user_id","type":"STRING(36)","nullable":false},{"name":"filename","type":"STRING(255)","nullable":false},{"name":"file_size","type":"INT64","nullable":false},{"name":"mime_type","type":"STRING(100)","nullable":false},{"name":"storage_path","type":"STRING(500)","nullable":false},{"name":"uploaded_at","type":"TIMESTAMP (allow_commit_timestamp=TRUE)","nullable":false}],"indexes":[{"name":"IDX_attachments_user_id_4C7D73049CFAC993","def":"CREATE INDEX IDX_attachments_user_id_4C7D73049CFAC993 ON attachments (user_id)","table":"attachments","columns":["user_id"]}],"constraints":[{"name":"PRIMARY_KEY","type":"PRIMARY_KEY","def":"PRIMARY KEY(todo_id, attachment_id)","table":"attachments","columns":["todo_id","attachment_id"]},{"name":"INTERLEAVE","type":"INTERLEAVE","def":"INTERLEAVE IN PARENT todos ON DELETE CASCADE","table":"attachments","referenced_table":"todos","columns":["todo_id","attachment_id"],"referenced_columns":["todo_id"]}]},{"name":"categories","type":"BASIC TABLE","columns":[{"name":"user_id","type":"STRING(36)","nullable":false},{"name":"category_id","type":"STRING(36)","nullable":false},{"name":"name","type":"STRING(100)","nullable":false},{"name":"color","type":"STRING(7)","nullable":true},{"name":"created_at","type":"TIMESTAMP (allow_commit_timestamp=TRUE)","nullable":false}],"indexes":[{"name":"IDX_categories_category_id_U_BC14739FA19E28EE","def":"CREATE UNIQUE INDEX IDX_categories_category_id_U_BC14739FA19E28EE ON categories (category_id)","table":"categories","columns":["category_id"]}],"constraints":[{"name":"PRIMARY_KEY","type":"PRIMARY_KEY","def":"PRIMARY KEY(user_id, category_id)","table":"categories","columns":["user_id","category_id"]},{"name":"INTERLEAVE","type":"INTERLEAVE","def":"INTERLEAVE IN PARENT users ON DELETE CASCADE","table":"categories","referenced_table":"users","columns":["user_id","category_id"],"referenced_columns":["user_id"]}]},{"name":"tags","type":"BASIC TABLE","columns":[{"name":"tag_id","type":"STRING(36)","nullable":false},{"name":"name","type":"STRING(50)","nullable":false},{"name":"created_at","type":"TIMESTAMP (allow_commit_timestamp=TRUE)","nullable":false}],"indexes":[{"name":"idx_tags_name","def":"CREATE UNIQUE INDEX idx_tags_name ON tags (name)","table":"tags","columns":["name"]}],"constraints":[{"name":"PRIMARY_KEY","type":"PRIMARY_KEY","def":"PRIMARY KEY(tag_id)","table":"tags","columns":["tag_id"]}]},{"name":"todos","type":"BASIC TABLE","columns":[{"name":"todo_id","type":"STRING(36)","nullable":false},{"name":"user_id","type":"STRING(36)","nullable":false},{"name":"category_id","type":"STRING(36)","nullable":true},{"name":"title","type":"STRING(255)","nullable":false},{"name":"description","type":"STRING(MAX)","nullable":true},{"name":"status","type":"STRING(20)","nullable":false},{"name":"priority","type":"STRING(10)","nullable":false},{"name":"due_date","type":"DATE","nullable":true},{"name":"created_at","type":"TIMESTAMP (allow_commit_timestamp=TRUE)","nullable":false},{"name":"updated_at","type":"TIMESTAMP (allow_commit_timestamp=TRUE)","nullable":false},{"name":"completed_at","type":"TIMESTAMP","nullable":true}],"indexes":[{"name":"idx_todos_due_date","def":"CREATE INDEX idx_todos_due_date ON todos (due_date)","table":"todos","columns":["due_date"]},{"name":"IDX_todos_user_id_4E872528DC8BBCA7","def":"CREATE INDEX IDX_todos_user_id_4E872528DC8BBCA7 ON todos (user_id)","table":"todos","columns":["user_id"]},{"name":"IDX_todos_category_id_N_3B7864FE3ED3FF87","def":"CREATE NULL_FILTERED INDEX IDX_todos_category_id_N_3B7864FE3ED3FF87 ON todos (category_id)","table":"todos","columns":["category_id"]},{"name":"idx_todos_user_status","def":"CREATE INDEX idx_todos_user_status ON todos (user_id, status)","table":"todos","columns":["user_id","status"]}],"constraints":[{"name":"PRIMARY_KEY","type":"PRIMARY_KEY","def":"PRIMARY KEY(todo_id)","table":"todos","columns":["todo_id"]}]},{"name":"todo_tags","type":"BASIC TABLE","columns":[{"name":"todo_id","type":"STRING(36)","nullable":false},{"name":"tag_id","type":"STRING(36)","nullable":false},{"name":"created_at","type":"TIMESTAMP (allow_commit_timestamp=TRUE)","nullable":false}],"indexes":[{"name":"IDX_todo_tags_tag_id_8034AADD17A5A521","def":"CREATE INDEX IDX_todo_tags_tag_id_8034AADD17A5A521 ON todo_tags (tag_id)","table":"todo_tags","columns":["tag_id"]}],"constraints":[{"name":"PRIMARY_KEY","type":"PRIMARY_KEY","def":"PRIMARY KEY(todo_id, tag_id)","table":"todo_tags","columns":["todo_id","tag_id"]},{"name":"INTERLEAVE","type":"INTERLEAVE","def":"INTERLEAVE IN PARENT todos ON DELETE CASCADE","table":"todo_tags","referenced_table":"todos","columns":["todo_id","tag_id"],"referenced_columns":["todo_id"]}]}],"relations":[{"table":"comments","columns":["todo_id","comment_id"],"cardinality":"zero_or_one","parent_table":"todos","parent_columns":["todo_id"],"parent_cardinality":"exactly_one","def":"INTERLEAVE IN PARENT todos ON DELETE CASCADE"},{"table":"attachments","columns":["todo_id","attachment_id"],"cardinality":"zero_or_one","parent_table":"todos","parent_columns":["todo_id"],"parent_cardinality":"exactly_one","def":"INTERLEAVE IN PARENT todos ON DELETE CASCADE"},{"table":"categories","columns":["user_id","category_id"],"cardinality":"zero_or_one","parent_table":"users","parent_columns":["user_id"],"parent_cardinality":"exactly_one","def":"INTERLEAVE IN PARENT users ON DELETE CASCADE"},{"table":"todo_tags","columns":["todo_id","tag_id"],"cardinality":"zero_or_one","parent_table":"todos","parent_columns":["todo_id"],"parent_cardinality":"exactly_one","def":"INTERLEAVE IN PARENT todos ON DELETE CASCADE"}],"driver":{"name":"spanner"}}
+{
+  "name": "projects/test-project/instances/test-instance/databases/todo-db",
+  "tables": [
+    {
+      "name": "comments",
+      "type": "BASIC TABLE",
+      "columns": [
+        {
+          "name": "todo_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "comment_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "content",
+          "type": "STRING(MAX)",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "nullable": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IDX_comments_user_id_E6D097A830600D54",
+          "def": "CREATE INDEX IDX_comments_user_id_E6D097A830600D54 ON comments (user_id)",
+          "table": "comments",
+          "columns": [
+            "user_id"
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY_KEY",
+          "type": "PRIMARY_KEY",
+          "def": "PRIMARY KEY(todo_id, comment_id)",
+          "table": "comments",
+          "columns": [
+            "todo_id",
+            "comment_id"
+          ]
+        },
+        {
+          "name": "INTERLEAVE",
+          "type": "INTERLEAVE",
+          "def": "INTERLEAVE IN PARENT todos ON DELETE CASCADE",
+          "table": "comments",
+          "referenced_table": "todos",
+          "columns": [
+            "todo_id",
+            "comment_id"
+          ],
+          "referenced_columns": [
+            "todo_id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "type": "BASIC TABLE",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "email",
+          "type": "STRING(255)",
+          "nullable": false
+        },
+        {
+          "name": "username",
+          "type": "STRING(100)",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "nullable": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "idx_users_email",
+          "def": "CREATE UNIQUE INDEX idx_users_email ON users (email)",
+          "table": "users",
+          "columns": [
+            "email"
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY_KEY",
+          "type": "PRIMARY_KEY",
+          "def": "PRIMARY KEY(user_id)",
+          "table": "users",
+          "columns": [
+            "user_id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "attachments",
+      "type": "BASIC TABLE",
+      "columns": [
+        {
+          "name": "todo_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "attachment_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "filename",
+          "type": "STRING(255)",
+          "nullable": false
+        },
+        {
+          "name": "file_size",
+          "type": "INT64",
+          "nullable": false
+        },
+        {
+          "name": "mime_type",
+          "type": "STRING(100)",
+          "nullable": false
+        },
+        {
+          "name": "storage_path",
+          "type": "STRING(500)",
+          "nullable": false
+        },
+        {
+          "name": "uploaded_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "nullable": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IDX_attachments_user_id_4C7D73049CFAC993",
+          "def": "CREATE INDEX IDX_attachments_user_id_4C7D73049CFAC993 ON attachments (user_id)",
+          "table": "attachments",
+          "columns": [
+            "user_id"
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY_KEY",
+          "type": "PRIMARY_KEY",
+          "def": "PRIMARY KEY(todo_id, attachment_id)",
+          "table": "attachments",
+          "columns": [
+            "todo_id",
+            "attachment_id"
+          ]
+        },
+        {
+          "name": "INTERLEAVE",
+          "type": "INTERLEAVE",
+          "def": "INTERLEAVE IN PARENT todos ON DELETE CASCADE",
+          "table": "attachments",
+          "referenced_table": "todos",
+          "columns": [
+            "todo_id",
+            "attachment_id"
+          ],
+          "referenced_columns": [
+            "todo_id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "categories",
+      "type": "BASIC TABLE",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "category_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "name",
+          "type": "STRING(100)",
+          "nullable": false
+        },
+        {
+          "name": "color",
+          "type": "STRING(7)",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "nullable": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IDX_categories_category_id_U_BC14739FA19E28EE",
+          "def": "CREATE UNIQUE INDEX IDX_categories_category_id_U_BC14739FA19E28EE ON categories (category_id)",
+          "table": "categories",
+          "columns": [
+            "category_id"
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY_KEY",
+          "type": "PRIMARY_KEY",
+          "def": "PRIMARY KEY(user_id, category_id)",
+          "table": "categories",
+          "columns": [
+            "user_id",
+            "category_id"
+          ]
+        },
+        {
+          "name": "INTERLEAVE",
+          "type": "INTERLEAVE",
+          "def": "INTERLEAVE IN PARENT users ON DELETE CASCADE",
+          "table": "categories",
+          "referenced_table": "users",
+          "columns": [
+            "user_id",
+            "category_id"
+          ],
+          "referenced_columns": [
+            "user_id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tags",
+      "type": "BASIC TABLE",
+      "columns": [
+        {
+          "name": "tag_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "name",
+          "type": "STRING(50)",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "nullable": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "idx_tags_name",
+          "def": "CREATE UNIQUE INDEX idx_tags_name ON tags (name)",
+          "table": "tags",
+          "columns": [
+            "name"
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY_KEY",
+          "type": "PRIMARY_KEY",
+          "def": "PRIMARY KEY(tag_id)",
+          "table": "tags",
+          "columns": [
+            "tag_id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "todos",
+      "type": "BASIC TABLE",
+      "columns": [
+        {
+          "name": "todo_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "user_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "category_id",
+          "type": "STRING(36)",
+          "nullable": true
+        },
+        {
+          "name": "title",
+          "type": "STRING(255)",
+          "nullable": false
+        },
+        {
+          "name": "description",
+          "type": "STRING(MAX)",
+          "nullable": true
+        },
+        {
+          "name": "status",
+          "type": "STRING(20)",
+          "nullable": false
+        },
+        {
+          "name": "priority",
+          "type": "STRING(10)",
+          "nullable": false
+        },
+        {
+          "name": "due_date",
+          "type": "DATE",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "nullable": false
+        },
+        {
+          "name": "completed_at",
+          "type": "TIMESTAMP",
+          "nullable": true
+        }
+      ],
+      "indexes": [
+        {
+          "name": "idx_todos_due_date",
+          "def": "CREATE INDEX idx_todos_due_date ON todos (due_date)",
+          "table": "todos",
+          "columns": [
+            "due_date"
+          ]
+        },
+        {
+          "name": "IDX_todos_user_id_4E872528DC8BBCA7",
+          "def": "CREATE INDEX IDX_todos_user_id_4E872528DC8BBCA7 ON todos (user_id)",
+          "table": "todos",
+          "columns": [
+            "user_id"
+          ]
+        },
+        {
+          "name": "IDX_todos_category_id_N_3B7864FE3ED3FF87",
+          "def": "CREATE NULL_FILTERED INDEX IDX_todos_category_id_N_3B7864FE3ED3FF87 ON todos (category_id)",
+          "table": "todos",
+          "columns": [
+            "category_id"
+          ]
+        },
+        {
+          "name": "idx_todos_user_status",
+          "def": "CREATE INDEX idx_todos_user_status ON todos (user_id, status)",
+          "table": "todos",
+          "columns": [
+            "user_id",
+            "status"
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY_KEY",
+          "type": "PRIMARY_KEY",
+          "def": "PRIMARY KEY(todo_id)",
+          "table": "todos",
+          "columns": [
+            "todo_id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "todo_tags",
+      "type": "BASIC TABLE",
+      "columns": [
+        {
+          "name": "todo_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "tag_id",
+          "type": "STRING(36)",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP (allow_commit_timestamp=TRUE)",
+          "nullable": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "IDX_todo_tags_tag_id_8034AADD17A5A521",
+          "def": "CREATE INDEX IDX_todo_tags_tag_id_8034AADD17A5A521 ON todo_tags (tag_id)",
+          "table": "todo_tags",
+          "columns": [
+            "tag_id"
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PRIMARY_KEY",
+          "type": "PRIMARY_KEY",
+          "def": "PRIMARY KEY(todo_id, tag_id)",
+          "table": "todo_tags",
+          "columns": [
+            "todo_id",
+            "tag_id"
+          ]
+        },
+        {
+          "name": "INTERLEAVE",
+          "type": "INTERLEAVE",
+          "def": "INTERLEAVE IN PARENT todos ON DELETE CASCADE",
+          "table": "todo_tags",
+          "referenced_table": "todos",
+          "columns": [
+            "todo_id",
+            "tag_id"
+          ],
+          "referenced_columns": [
+            "todo_id"
+          ]
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "table": "comments",
+      "columns": [
+        "todo_id",
+        "comment_id"
+      ],
+      "cardinality": "zero_or_one",
+      "parent_table": "todos",
+      "parent_columns": [
+        "todo_id"
+      ],
+      "parent_cardinality": "exactly_one",
+      "def": "INTERLEAVE IN PARENT todos ON DELETE CASCADE"
+    },
+    {
+      "table": "attachments",
+      "columns": [
+        "todo_id",
+        "attachment_id"
+      ],
+      "cardinality": "zero_or_one",
+      "parent_table": "todos",
+      "parent_columns": [
+        "todo_id"
+      ],
+      "parent_cardinality": "exactly_one",
+      "def": "INTERLEAVE IN PARENT todos ON DELETE CASCADE"
+    },
+    {
+      "table": "categories",
+      "columns": [
+        "user_id",
+        "category_id"
+      ],
+      "cardinality": "zero_or_one",
+      "parent_table": "users",
+      "parent_columns": [
+        "user_id"
+      ],
+      "parent_cardinality": "exactly_one",
+      "def": "INTERLEAVE IN PARENT users ON DELETE CASCADE"
+    },
+    {
+      "table": "todo_tags",
+      "columns": [
+        "todo_id",
+        "tag_id"
+      ],
+      "cardinality": "zero_or_one",
+      "parent_table": "todos",
+      "parent_columns": [
+        "todo_id"
+      ],
+      "parent_cardinality": "exactly_one",
+      "def": "INTERLEAVE IN PARENT todos ON DELETE CASCADE"
+    }
+  ],
+  "driver": {
+    "name": "spanner"
+  }
+}
